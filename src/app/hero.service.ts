@@ -5,6 +5,8 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Location } from '@angular/common';
+
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -15,12 +17,15 @@ const httpOptions = {
 export class HeroService {
   private heroesUrl = 'api/heroes';  // URL to web api
 
+  constructor(private http: HttpClient,
+    private messageService: MessageService,
+    private location: Location) { }
+
+
   deleteHero(hero: Hero): any {
-    throw new Error("Method not implemented.");
+    return this.location.back();
   }
 
-  constructor(private http: HttpClient,
-    private messageService: MessageService) { }
 
   /** POST: add a new hero to the server */
   addHero(hero: Hero): Observable<Hero> {
