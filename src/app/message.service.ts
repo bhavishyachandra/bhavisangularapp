@@ -11,7 +11,7 @@ export class MessageService {
     this.messages = ['test', 'message'];
   }
 
-  addMessage(message: string): void {
+  add(message: string): void {
     this.messages.push(message);
   }
 
